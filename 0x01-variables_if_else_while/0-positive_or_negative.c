@@ -1,30 +1,30 @@
 #include <stdlib.h>
-#include <time.h>
 #include <stdio.h>
-
+#include <time.h>
 /**
- *main - Entry point
- *Return: Always 0 (Success)
- */
-
+*main - Entry point, positive or negative, print sign of random number
+*@void: Empty parameter list for main
+*Decription: positive, zero and negative values
+*Return: zero for success
+*/
 int main(void)
 {
-        int n;
+	int n;
 
-        srand(time(0));
-        n = rand() - RAND_MAX / 2;
-        if (n > 0)
-        {
-        printf("%d is %s\n", n, "positive");
-        }
-        else if (n < 0)
-        {
-        printf("%d is %s\n", n, "negative");
-        }
-        else
-        {
-        printf("%d is %s\n", n, "zero");
-        }
-        return (0);
+	srand(time(0));
+	n = rand() - RAND_MAX / 2;
+
+	if (n > 0)
+	{
+		printf("%d is positive\n", n);
+	}
+	else if (n == 0)
+	{
+		printf("%d is zero\n", n);
+	}
+	else
+	{
+		printf("%d is negative\n", n);
+	}
+	return (0);
 }
-

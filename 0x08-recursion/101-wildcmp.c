@@ -1,12 +1,30 @@
-#include <stdio.h>
-#include "main.h"
+include "main.h"
+
 /**
- * wildcmp - Entry Point
- * @s1: input
- * @s2: input
- * Return: 0
+ * check - checks for the square root
+ * @a:int
+ * @b:int
+ *
+ * Return: int
  */
-int wildcmp(char *s1, char *s2)
+int check(int a, int b)
 {
-	return (0);
+	if (a * a == b)
+		return (a);
+	if (a * a > b)
+		return (-1);
+	return (check(a + 1, b));
 }
+
+/**
+ * _sqrt_recursion - returns the natural square root of a number
+ * @n: integer to find sqrt of
+ * Return: natural square root or -1
+ */
+int _sqrt_recursion(int n)
+{
+	if (n == 0)
+		return (0);
+	return (check(1, n));
+}
+

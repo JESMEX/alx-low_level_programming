@@ -1,30 +1,30 @@
-include "main.h"
-
+#include "main.h"
 /**
- * check - checks for the square root
- * @a:int
- * @b:int
- *
- * Return: int
+ * wildcmp - compare two strings with possible wildcards
+ * @s1: string
+ * @s2: string
+ * Return:int 0 or 1
  */
-int check(int a, int b)
+int wildcmp(char *s1, char *s2)
 {
-	if (a * a == b)
-		return (a);
-	if (a * a > b)
-		return (-1);
-	return (check(a + 1, b));
-}
-
-/**
- * _sqrt_recursion - returns the natural square root of a number
- * @n: integer to find sqrt of
- * Return: natural square root or -1
- */
-int _sqrt_recursion(int n)
-{
-	if (n == 0)
+	if (*s1 == '\0' && *s2 == '\0')
+		return (1);
+	else if (*s1 == '\0' && *s2 == '*')
+		return (wildcmp(s1, (s2 + 1)));
+	else if (*s1 == '\0' || *s2 == '\0')
 		return (0);
-	return (check(1, n));
-}
 
+	if (*s1 == *s2)
+		return (wildcmp((s1 + 1), (s2 + 1)));
+
+	if (*s2 == '*')
+	{
+		if (*(s2 + 1) == '*')
+			return (wildcmp(s1, (s2 + 1)));
+		else if (wildcmp(s1, s2 + 1))
+			return (1);
+		else
+			return (wildcmp(s1 + 1, s2));
+	}
+	return (0);
+}

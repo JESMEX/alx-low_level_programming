@@ -1,24 +1,4 @@
-
-
-Theemiss
-/
-holbertonschool-low_level_programming
-Public
-Code
-Issues
-Pull requests
-2
-Actions
-Projects
-Wiki
-Security
-Insights
- master 
-holbertonschool-low_level_programming/0x0A-argc_argv/3-mul.c
- 
- 
-26 lines (25 sloc)  308 Bytes
- #include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 /**
  * main - mul 2 argv

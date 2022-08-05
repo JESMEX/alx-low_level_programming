@@ -12,11 +12,10 @@
  * @argv: double pointer to arguments
  * Return: 0
  */
-int main(int argc, char *argv[])
+int main(int _attribute_((_unused_)) argc, char *argv[])
 {
-	int one, two, ans;
-	int (*res)(int, int);
-	char *get_op;
+	int num1, num2;
+	char *op;
 
 	if (argc != 4)
 	{
@@ -24,27 +23,19 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
-	one = atoi(argv[1]);
-	two = atoi(argv[3]);
-	get_op = argv[2];
-
-	/* added edge case if argv[2] was longer than 1 char*/
-	if (get_op_func(argv[2]) == NULL || argv[2][1] != '\0')
+	num1 = atoi(argv[1]);
+	op = argv[2];
+	num2 = atoi(argv[3]);
+	if (get_op_func(op) == NULL || op[1] != '\0')
 	{
-		printf("Error\n");
-		exit(99);
+	printf("Error\n");
+	exit(99);
 	}
-
-	if ((*get_op == '/' || *get_op == '%') && (*argv[3] == '0'))
+	if ((*op == '/' && num2 == 0) || (*op == '%' && num2 == 0))
 	{
 		printf("Error\n");
 		exit(100);
 	}
-
-	res = get_op_func(get_op);
-	ans = res(one, two);
-
-	printf("%d\n", ans);
+	printf("%d\n", get_op_func(op)(num1, num2));
 	return (0);
 }
-
